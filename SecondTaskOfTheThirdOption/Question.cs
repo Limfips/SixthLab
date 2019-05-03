@@ -1,15 +1,15 @@
 using System;
 
-namespace SecondTaskOfTheThirdOption.FifthLaba
+namespace SecondTaskOfTheThirdOption
 {
     public class Question
     {
-        private readonly Theme _theme;
+        private readonly ThemeEnum _theme;
         private readonly string _question;
-        private readonly string _optionalAnswers;
+        private readonly string[] _optionalAnswers;
         private readonly string _correctAnswer;
 
-        public Question(Theme theme, string question, string optionalAnswers, string correctAnswer)
+        public Question(ThemeEnum theme, string question, string[] optionalAnswers, string correctAnswer)
         {
             _theme = theme;
             _question = question;
@@ -17,26 +17,24 @@ namespace SecondTaskOfTheThirdOption.FifthLaba
             _correctAnswer = correctAnswer;
         }
 
-        public enum Theme
+        public enum ThemeEnum
         {
             FirstTheme,
             SecondTheme,
             ThirdTheme
         }
 
+        public ThemeEnum Theme => _theme;
 
-        public void Show()
-        {
-            Console.WriteLine("{0}",_theme);
-            Console.WriteLine("{0}",_question);
-            Console.WriteLine("{0}",_optionalAnswers);
-        }
+        public string Question1 => _question;
 
-        public Theme GetTheme()
+        public string[] OptionalAnswers => _optionalAnswers;
+
+        public string CorrectAnswer => _correctAnswer;
+
+        public override string ToString()
         {
-            return _theme;
+            return _theme+" "+_question;
         }
     }
-    
-    
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace SecondTaskOfTheThirdOption.FifthLaba
+namespace SecondTaskOfTheThirdOption
 {
     public class Test
     {

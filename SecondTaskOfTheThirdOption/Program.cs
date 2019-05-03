@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace SecondTaskOfTheThirdOption.FifthLaba
+namespace SecondTaskOfTheThirdOption
 {
     internal class Program
     {
@@ -9,10 +8,10 @@ namespace SecondTaskOfTheThirdOption.FifthLaba
         {
             Console.WriteLine("How many tests do you need?");
             var quantity = Convert.ToInt32(Console.ReadLine());
-            TestManager testManager = new TestManager(quantity);
-            Test[] tests = testManager.GetTests();
+            TestManager testManager = new TestManager();
+            Test[] tests = testManager.CreateTests(quantity);
             Console.WriteLine("Tests generated!");
-            testManager.ShowTests(tests);
+            testManager.PrintTests(tests);
         }
     }
 }

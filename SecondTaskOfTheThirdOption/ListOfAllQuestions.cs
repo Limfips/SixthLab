@@ -1,22 +1,35 @@
-namespace SecondTaskOfTheThirdOption.FifthLaba
+namespace SecondTaskOfTheThirdOption
 {
     public class List 
     {
         public readonly Question[] Questions =
         {
-            new Question(Question.Theme.FirstTheme, "01", "1 2 3 4", "1"),
-            new Question(Question.Theme.FirstTheme, "02", "1 2 3 4", "2"),
-            new Question(Question.Theme.FirstTheme, "03", "1 2 3 4", "3"),
-            new Question(Question.Theme.SecondTheme, "04", "1 2 3 4", "4"),
-            new Question(Question.Theme.SecondTheme, "05", "1 2 3 4", "1"),
-            new Question(Question.Theme.SecondTheme, "06", "1 2 3 4", "2"),
-            new Question(Question.Theme.SecondTheme, "07", "1 2 3 4", "3"),
-            new Question(Question.Theme.SecondTheme, "08", "1 2 3 4", "4"),
-            new Question(Question.Theme.ThirdTheme, "09", "1 2 3 4", "1"),
-            new Question(Question.Theme.ThirdTheme, "10", "1 2 3 4", "2"),
-            new Question(Question.Theme.ThirdTheme, "11", "1 2 3 4", "3"),
-            new Question(Question.Theme.ThirdTheme, "12", "1 2 3 4", "4"),
-            new Question(Question.Theme.ThirdTheme, "13", "1 2 3 4", "1")
+            new Question(Question.ThemeEnum.FirstTheme, "01",
+                new [] {"1", "2", "3", "4"}, "1"),
+            new Question(Question.ThemeEnum.FirstTheme, "02", 
+                new [] {"1", "2", "3", "4"}, "2"),
+            new Question(Question.ThemeEnum.FirstTheme, "03", 
+                new [] {"1", "2", "3", "4"}, "3"),
+            new Question(Question.ThemeEnum.SecondTheme, "04", 
+                new [] {"1", "2", "3", "4"}, "4"),
+            new Question(Question.ThemeEnum.SecondTheme, "05", 
+                new [] {"1", "2", "3", "4"}, "1"),
+            new Question(Question.ThemeEnum.SecondTheme, "06", 
+                new [] {"1", "2", "3", "4"}, "2"),
+            new Question(Question.ThemeEnum.SecondTheme, "07", 
+                new [] {"1", "2", "3", "4"}, "3"),
+            new Question(Question.ThemeEnum.SecondTheme, "08", 
+                new [] {"1", "2", "3", "4"}, "4"),
+            new Question(Question.ThemeEnum.ThirdTheme, "09", 
+                new [] {"1", "2", "3", "4"}, "1"),
+            new Question(Question.ThemeEnum.ThirdTheme, "10", 
+                new [] {"1", "2", "3", "4"}, "2"),
+            new Question(Question.ThemeEnum.ThirdTheme, "11", 
+                new [] {"1", "2", "3", "4"}, "3"),
+            new Question(Question.ThemeEnum.ThirdTheme, "12", 
+                new [] {"1", "2", "3", "4"}, "4"),
+            new Question(Question.ThemeEnum.ThirdTheme, "13", 
+                new [] {"1", "2", "3", "4"}, "1")
         };
     }
 }
