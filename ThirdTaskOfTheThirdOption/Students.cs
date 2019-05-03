@@ -1,24 +1,24 @@
 using System;
 
-namespace ThirdTaskOfTheThirdOption.FifthLaba
+namespace ThirdTaskOfTheThirdOption
 {
     public class Students
     {
-        private Student[] _students;
+        private Undergrad[] _students;
 
-        public Students() : this(new Student[0]){}
-        public Students(Student[] students)
+        public Students() : this(new Undergrad[0]){}
+        public Students(Undergrad[] students)
         {
             _students = students;
         }
 
-        public void Add(Student student)
+        public void Add(Undergrad undergrad)
         {
             Array.Resize(ref _students, _students.Length+1);
-            _students[_students.Length-1] = student;
+            _students[_students.Length-1] = undergrad;
         }
         
-        public Student GetByIndex(int studentIndex)
+        public Undergrad GetByIndex(int studentIndex)
         {
             return _students[studentIndex];
         }

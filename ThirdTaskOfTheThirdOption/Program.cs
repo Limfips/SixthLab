@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ThirdTaskOfTheThirdOption.FifthLaba
+namespace ThirdTaskOfTheThirdOption
 {
     internal class Program
     {
@@ -17,36 +17,36 @@ namespace ThirdTaskOfTheThirdOption.FifthLaba
             WriteToFileStudents(students);
             Console.WriteLine("Файл записан!");
         }
-        private static Student[] GetListStudents()
+        private static Undergrad[] GetListStudents()
         {
-            Student[] students;
+            Undergrad[] undergrads;
             try
             {
                 var file = new StreamReader(SourceFilePath);
                 int n = Convert.ToInt32(file.ReadLine());
-                students = new Student[n];
+                undergrads = new Undergrad[n];
                 string fileLine;
                 int pos = 0;
                 while ((fileLine = file.ReadLine()) != null)
                 {
-                    students[pos++] = GetNewStudent(fileLine);
+                    undergrads[pos++] = GetNewStudent(fileLine);
                 }
                 file.Close();
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("Файл не удалось открыть, проверте путь");
                 throw;
             }
-            return students;
+            return undergrads;
         }
-        private static Student GetNewStudent(string fileLine)
+        private static Undergrad GetNewStudent(string fileLine)
         {
             var simSent = fileLine.Split(' ');
-            Student student = new Student(simSent[1], simSent[0],
+            Undergrad undergrad = new Undergrad(simSent[1], simSent[0],
                 Convert.ToInt32(simSent[2]), Convert.ToInt32(simSent[3]),
                 Convert.ToInt32(simSent[4]));
-            return student;
+            return undergrad;
         }
         private static void WriteToFileStudents(Students students)
         {
@@ -61,7 +61,7 @@ namespace ThirdTaskOfTheThirdOption.FifthLaba
                 }
                 file.Close();
             }
-            catch (Exception)
+            catch (DirectoryNotFoundException)
             {
                 Console.WriteLine("Не удалось записать данные в файл, проверте путь");
                 throw;

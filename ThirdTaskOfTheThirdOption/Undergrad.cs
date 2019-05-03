@@ -1,8 +1,8 @@
 using System;
 
-namespace ThirdTaskOfTheThirdOption.FifthLaba
+namespace ThirdTaskOfTheThirdOption
 {
-    public class Student
+    public class Undergrad
     {
         private readonly string _firstName;
         private readonly string _lastName;
@@ -10,7 +10,7 @@ namespace ThirdTaskOfTheThirdOption.FifthLaba
         private readonly int _physicsScore;
         private readonly int _informaticsScore;
 
-        public Student(string firstName, string lastName, 
+        public Undergrad(string firstName, string lastName, 
                         int mathScore, int physicsScore, int informaticsScore)
         {
             _firstName = firstName;

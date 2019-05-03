@@ -1,6 +1,6 @@
 using System;
 
-namespace FirstTaskOfTheSecondOption.FifthLaba
+namespace FirstTaskOfTheSecondOption
 {
     public class Time
     {
@@ -11,12 +11,12 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
         
         public Time(int hour, int minute, int second)
         {
-            _hour = GetHourValue(hour);
-            _minute = GetMinuteValue(minute);
-            _second = GetSecondValue(second);
+            _hour = SetHourValue(hour);
+            _minute = SetMinuteValue(minute);
+            _second = SetSecondValue(second);
         }
 
-        private int GetHourValue(int hour)
+        private int SetHourValue(int hour)
         {
             if (hour >= 0 && hour < 24)
             {
@@ -31,7 +31,7 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
             throw new Exception("Отрицательное значение");
         }
 
-        private int GetMinuteValue(int minute)
+        private int SetMinuteValue(int minute)
         {
             if (minute >= 0 && minute < 60)
             {
@@ -47,7 +47,7 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
             throw new Exception("Отрицательное значение");
         }
 
-        private int GetSecondValue(int second)
+        private int SetSecondValue(int second)
         {
             if (second >= 0 && second < 60)
             {
@@ -75,7 +75,7 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
             {
                 try
                 {
-                    _hour = GetHourValue(value);
+                    _hour = SetHourValue(value);
                 }
                 catch (Exception)
                 {
@@ -95,7 +95,7 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
             {
                 try
                 {
-                    _minute = GetMinuteValue(value);
+                    _minute = SetMinuteValue(value);
                 }
                 catch (Exception)
                 {
@@ -116,7 +116,7 @@ namespace FirstTaskOfTheSecondOption.FifthLaba
             {
                 try
                 {
-                    _second = GetSecondValue(value);
+                    _second = SetSecondValue(value);
                 }
                 catch (Exception)
                 {

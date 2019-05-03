@@ -1,5 +1,4 @@
 using System;
-using FirstTaskOfTheSecondOption.FifthLaba;
 
 namespace FirstTaskOfTheSecondOption
 {
