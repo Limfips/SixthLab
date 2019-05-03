@@ -2,7 +2,7 @@ using System;
 
 namespace FirstTaskOfTheSecondOption
 {
-    public class Start
+    public static class Start
     {
         /// <summary>
         /// Проверка работы класса Time
