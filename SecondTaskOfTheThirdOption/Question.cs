@@ -1,40 +1,33 @@
-using System;
-
 namespace SecondTaskOfTheThirdOption
 {
     public class Question
     {
-        private readonly ThemeEnum _theme;
-        private readonly string _question;
-        private readonly string[] _optionalAnswers;
-        private readonly string _correctAnswer;
-
-        public Question(ThemeEnum theme, string question, string[] optionalAnswers, string correctAnswer)
-        {
-            _theme = theme;
-            _question = question;
-            _optionalAnswers = optionalAnswers;
-            _correctAnswer = correctAnswer;
-        }
-
-        public enum ThemeEnum
+        public enum Themes
         {
             FirstTheme,
             SecondTheme,
             ThirdTheme
         }
 
-        public ThemeEnum Theme => _theme;
+        public Question(Themes theme, string question, string[] optionalAnswers, string correctAnswer)
+        {
+            Theme = theme;
+            _question = question;
+            OptionalAnswers = optionalAnswers;
+            CorrectAnswer = correctAnswer;
+        }
 
-        public string Question1 => _question;
+        private Themes Theme { get; }
 
-        public string[] OptionalAnswers => _optionalAnswers;
+        private string _question { get; }
 
-        public string CorrectAnswer => _correctAnswer;
+        private string[] OptionalAnswers { get; }
+
+        private string CorrectAnswer { get; }
 
         public override string ToString()
         {
-            return _theme+" "+_question;
+            return Theme + " " + _question;
         }
     }
 }

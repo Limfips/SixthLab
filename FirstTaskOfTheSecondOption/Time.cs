@@ -1,133 +1,119 @@
 using System;
+using System.Diagnostics;
 
 namespace FirstTaskOfTheSecondOption
 {
     public class Time
     {
+        //rider ругается на отсутствие черточек
         private int _hour;
         private int _minute;
         private int _second;
-        
-        
+
+
         public Time(int hour, int minute, int second)
         {
-            _hour = SetHourValue(hour);
-            _minute = SetMinuteValue(minute);
-            _second = SetSecondValue(second);
+            if (hour >= 0 && minute >= 0 && second >= 0)
+            {
+                //Задаем секунды
+                if (second < 60)
+                {
+                    _second = second;
+                }
+                else
+                {
+                    _second = second % 60;
+                    minute += second / 60;
+                }
+                //Задаём минуты
+                if (minute < 60)
+                {
+                    _minute = minute;
+                }
+                else
+                {
+                    _minute = minute % 60;
+                    hour += minute / 60;
+                }
+                //Задаем часы
+                if (hour < 24)
+                {
+                    _hour = hour;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Превышено значение");
+                }
+
+            }
+            else
+            {
+                throw new FormatException("Неверный формат");  
+            }
         }
-
-        private int SetHourValue(int hour)
-        {
-            if (hour >= 0 && hour < 24)
-            {
-                return hour;
-            }
-
-            if (hour > 24)
-            {
-                return hour % 24;
-            }
-
-            throw new Exception("Отрицательное значение");
-        }
-
-        private int SetMinuteValue(int minute)
-        {
-            if (minute >= 0 && minute < 60)
-            {
-                return minute;
-            }
-
-            if (minute > 60)
-            {
-                _hour += minute / 60;
-                return minute % 60;
-            }
-
-            throw new Exception("Отрицательное значение");
-        }
-
-        private int SetSecondValue(int second)
-        {
-            if (second >= 0 && second < 60)
-            {
-                return second;
-            }
-
-            if (second > 60)
-            {
-                _minute += second / 60;
-                return second % 60;
-            }
-
-            throw new Exception("Отрицательное значение");
-        }
-
-        public override string ToString()
-        {
-            return _hour + ":" + _minute + ":" + _second;
-        }
-
+//смержить методы и сделать валидные геттеры и сеттеры
         public int Hour
         {
-            get => _hour;
+            get { return _hour; }
             set
             {
-                try
+                
+                _hour = value;
+                if (_hour < 0 || _hour > 24)
                 {
-                    _hour = SetHourValue(value);
-                }
-                catch (Exception)
-                {
-                    _hour += value;
-                    while (_hour < 0)
-                    {
-                        _hour += 24;
-                    }
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
 
         public int Minute
         {
-            get => _minute;
+            get { return _minute; }
             set
             {
-                try
+                if (value < 0)
                 {
-                    _minute = SetMinuteValue(value);
-                }
-                catch (Exception)
-                {
-                    _minute += value;
-                    while (_minute < 0)
+                    while (value < 0)
                     {
-                        _hour -= 1;
-                        _minute += 60;
+                        Hour -= 1;
+                        value += 60;
                     }
+
+                    _minute = value;
+                }else if (value > 0)
+                {
+                    _minute = value % 60;
+                    Hour += value / 60;
                 }
             }
         }
 
         public int Second
         {
-            get => _second;
+            get {return _second; }
             set
             {
-                try
+                if (value < 0)
                 {
-                    _second = SetSecondValue(value);
-                }
-                catch (Exception)
-                {
-                    _second += value;
-                    while (_second < 0)
+                    while (value < 0)
                     {
-                        _minute -= 1;
-                        _second += 60;
+                        Minute -= 1;
+                        value += 60;
                     }
+
+                    _second = value;
+                }
+                else if (value > 0)
+                {
+                    _second = value % 60;
+                    Minute += value / 60;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return _hour + ":" + _minute + ":" + _second;
         }
     }
 }

@@ -8,8 +8,8 @@ namespace SecondTaskOfTheThirdOption
         {
             Console.WriteLine("How many tests do you need?");
             var quantity = Convert.ToInt32(Console.ReadLine());
-            TestManager testManager = new TestManager();
-            Test[] tests = testManager.CreateTests(quantity);
+            var testManager = new TestManager();
+            var tests = testManager.CreateTests(quantity);
             Console.WriteLine("Tests generated!");
             testManager.PrintTests(tests);
         }

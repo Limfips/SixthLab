@@ -4,25 +4,26 @@ namespace ThirdTaskOfTheThirdOption
 {
     public class Students
     {
-        private Undergrad[] _students;
+        private Disciple[] _students;
 
-        public Students() : this(new Undergrad[0]){}
-        public Students(Undergrad[] students)
+        public Students() : this(new Disciple[0]){}
+
+        public Students(Disciple[] students)
         {
             _students = students;
         }
 
-        public void Add(Undergrad undergrad)
+        public void Add(Disciple disciple)
         {
-            Array.Resize(ref _students, _students.Length+1);
-            _students[_students.Length-1] = undergrad;
+            Array.Resize(ref _students, _students.Length + 1);
+            _students[_students.Length - 1] = disciple;
         }
-        
-        public Undergrad GetByIndex(int studentIndex)
+
+        public Disciple GetByIndex(int studentIndex)
         {
             return _students[studentIndex];
         }
-        
+
         public int GetQuantity()
         {
             return _students.Length;
@@ -34,20 +35,14 @@ namespace ThirdTaskOfTheThirdOption
             _students[firstIndex] = _students[secondIndex];
             _students[secondIndex] = tmp;
         }
-        
+
         public static void SortByAverageScore(Students students)
         {
             var quantity = students.GetQuantity();
-            for (int elementIndex = 0; elementIndex < quantity; elementIndex++)
-            {
-                for (int index = 0; index < quantity-1; index++)
-                {
-                    if (students.GetByIndex(index).GetAverageScore()<students.GetByIndex(index+1).GetAverageScore())
-                    {
-                        students.Swap(index,index+1);
-                    }
-                }
-            }
+            for (var elementIndex = 0; elementIndex < quantity; elementIndex++)
+            for (var index = 0; index < quantity - 1; index++)
+                if (students.GetByIndex(index).GetAverageScore() < students.GetByIndex(index + 1).GetAverageScore())
+                    students.Swap(index, index + 1);
         }
     }
 }
