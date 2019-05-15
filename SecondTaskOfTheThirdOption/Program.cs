@@ -8,7 +8,7 @@ namespace SecondTaskOfTheThirdOption
         {
             Console.WriteLine("How many tests do you need?");
             var quantity = Convert.ToInt32(Console.ReadLine());
-            var testManager = new TestManager();
+            var testManager = new TestManager(new List().Questions);
             var tests = testManager.CreateTests(quantity);
             Console.WriteLine("Tests generated!");
             testManager.PrintTests(tests);

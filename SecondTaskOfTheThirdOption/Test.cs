@@ -5,31 +5,29 @@ namespace SecondTaskOfTheThirdOption
 {
     public class Test
     {
-        private Question[] _questions;
+        private List<Question> _questions;
 
-        public Test() : this(new Question[0])
+        public Test() : this(new List<Question>())
         {
         }
 
-        public Test(Question[] questions)
+        public Test(List<Question> questions)
         {
             _questions = questions;
         }
 
-        public void AddQuestion(Question question)
+        public void Add(Question question)
         {
-            Array.Resize(ref _questions, _questions.Length + 1);
-            _questions[_questions.Length - 1] = question;
+            _questions.Add(question);
+        }
+        public void Remove(Question question)
+        {
+            _questions.Remove(question);
         }
 
-        public Question GetQuestionByIndex(int questionIndex)
+        public List<Question> Questions
         {
-            return _questions[questionIndex];
-        }
-
-        public int GetQuantity()
-        {
-            return _questions.Length;
+            get { return _questions; }
         }
     }
 }

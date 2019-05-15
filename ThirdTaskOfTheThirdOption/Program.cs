@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ThirdTaskOfTheThirdOption
@@ -10,59 +11,65 @@ namespace ThirdTaskOfTheThirdOption
 
         public static void Main(string[] args)
         {
-            var students = new Students(GetListStudents());
+            var pupilManager = new PupilManager(Parse());
             Console.WriteLine("Список создан!");
 
-            Students.SortByAverageScore(students);
-            WriteFile(students);
+            PupilManager.SortByAverageScore();
+            WriteFile(pupilManager);
             Console.WriteLine("Файл записан!");
         }
 
-        private static Disciple[] GetListStudents()
+        private static List<Pupil> Parse() //GetListPupils
         {
-            Disciple[] students;
+            List<Pupil> pupils = new List<Pupil>();
+            StreamReader file = StreamReader.Null;
             try
             {
-                var file = new StreamReader(SourceFilePath);
-                var n = Convert.ToInt32(file.ReadLine());
-                students = new Disciple[n];
+                file = new StreamReader(SourceFilePath);
                 string fileLine;
-                var position = 0;
-                while ((fileLine = file.ReadLine()) != null) students[position++] = GetNewStudent(fileLine);
+                while ((fileLine = file.ReadLine()) != null)
+                    pupils.Add(parsePupil(fileLine));
                 file.Close();
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Файл не удалось открыть, проверте путь");
-                throw;
+            }
+            finally
+            {
+                file.Close();
             }
 
-            return students;
+            return pupils;
         }
 
-        private static Disciple GetNewStudent(string fileLine)
+        private static Pupil parsePupil(string fileLine)
         {
             var simSent = fileLine.Split(' ');
-            var undergrad = new Disciple(simSent[1], simSent[0],
+            var pupil = new Pupil(simSent[1], simSent[0],
                 Convert.ToInt32(simSent[2]), Convert.ToInt32(simSent[3]),
                 Convert.ToInt32(simSent[4]));
-            return undergrad;
+            return pupil;
         }
 
-        private static void WriteFile(Students students)
+        private static void WriteFile(PupilManager pupilManager)
         {
+            StreamWriter file = StreamWriter.Null;
             try
             {
-                var file = new StreamWriter(OutputFilePath);
-
-                var quantity = students.GetQuantity();
-                for (var index = 0; index < quantity; index++) file.WriteLine(students.GetByIndex(index).GetName());
-                file.Close();
+                file = new StreamWriter(OutputFilePath);
+                foreach (var pupil in pupilManager.Pupils)
+                {
+                    file.WriteLine(pupil.GetName());
+                }
             }
             catch (DirectoryNotFoundException)
             {
                 Console.WriteLine("Не удалось записать данные в файл, проверте путь");
-                throw;
+            }
+            finally
+            {
+                file.Close();
             }
         }
     }

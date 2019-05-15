@@ -1,8 +1,9 @@
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace FirstTaskOfTheSecondOption
 {
-    public static class Start
+    public class Start
     {
         /// <summary>
         ///     Проверка работы класса Time
@@ -16,8 +17,8 @@ namespace FirstTaskOfTheSecondOption
                 Console.WriteLine(firstTime.ToString());
                 
                 firstTime.Second -= 11;
-                firstTime.Hour += 24;
-
+                firstTime.Hour += 20;
+                
                 Console.WriteLine(firstTime.ToString());
                 Console.WriteLine("Второе время:");
                 var secondTime = new Time(6, 10, 90);

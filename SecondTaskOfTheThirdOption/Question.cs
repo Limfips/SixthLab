@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SecondTaskOfTheThirdOption
 {
     public class Question
@@ -9,7 +11,7 @@ namespace SecondTaskOfTheThirdOption
             ThirdTheme
         }
 
-        public Question(Themes theme, string question, string[] optionalAnswers, string correctAnswer)
+        public Question(Themes theme, string question, List<string> optionalAnswers, string correctAnswer)
         {
             Theme = theme;
             _question = question;
@@ -17,13 +19,13 @@ namespace SecondTaskOfTheThirdOption
             CorrectAnswer = correctAnswer;
         }
 
-        private Themes Theme { get; }
+        private Themes Theme { get; set; }
 
-        private string _question { get; }
+        private string _question { get; set; }
 
-        private string[] OptionalAnswers { get; }
+        private List<string> OptionalAnswers { get; set; }
 
-        private string CorrectAnswer { get; }
+        private string CorrectAnswer { get; set; }
 
         public override string ToString()
         {

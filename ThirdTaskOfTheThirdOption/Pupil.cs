@@ -2,13 +2,13 @@ using System;
 
 namespace ThirdTaskOfTheThirdOption
 {
-    public class Disciple //Ученик
+    public class Pupil //Ученик
     {
         private readonly string _firstName;
         private readonly string _lastName;
         private readonly double _averageScore;
 
-        public Disciple(string firstName, string lastName,
+        public Pupil(string firstName, string lastName,
             int mathScore, int physicsScore, int informaticsScore)
         {
             _firstName = firstName;

@@ -13,51 +13,17 @@ namespace FirstTaskOfTheSecondOption
 
         public Time(int hour, int minute, int second)
         {
-            if (hour >= 0 && minute >= 0 && second >= 0)
-            {
-                //Задаем секунды
-                if (second < 60)
-                {
-                    _second = second;
-                }
-                else
-                {
-                    _second = second % 60;
-                    minute += second / 60;
-                }
-                //Задаём минуты
-                if (minute < 60)
-                {
-                    _minute = minute;
-                }
-                else
-                {
-                    _minute = minute % 60;
-                    hour += minute / 60;
-                }
-                //Задаем часы
-                if (hour < 24)
-                {
-                    _hour = hour;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Превышено значение");
-                }
-
-            }
-            else
-            {
-                throw new FormatException("Неверный формат");  
-            }
+            Second = second;
+            Minute = minute;
+            Hour = hour;
         }
+
 //смержить методы и сделать валидные геттеры и сеттеры
         public int Hour
         {
             get { return _hour; }
             set
             {
-                
                 _hour = value;
                 if (_hour < 0 || _hour > 24)
                 {
@@ -80,7 +46,8 @@ namespace FirstTaskOfTheSecondOption
                     }
 
                     _minute = value;
-                }else if (value > 0)
+                }
+                else if (value > 0)
                 {
                     _minute = value % 60;
                     Hour += value / 60;
@@ -90,7 +57,7 @@ namespace FirstTaskOfTheSecondOption
 
         public int Second
         {
-            get {return _second; }
+            get { return _second; }
             set
             {
                 if (value < 0)
